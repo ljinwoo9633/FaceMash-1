@@ -1,10 +1,18 @@
-var express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
+
+let router = express.Router();
+
 app.use(express.static('jsfile'));
-app.get('/', function(req, res){
-    res.send('<a href="/facemash.html">facemash</a>');
+
+//Routers
+router.get('/', (req, res) => {
+    return res.status(200).send('<a href="/facemash.html">facemash</a>');
 });
-app.listen(3000, function(){
+
+const PORT = 3000 || process.env.PORT;
+
+app.listen(PORT, function(){
     console.log('Connected 3000 port!');
     console.log('http://localhost:3000/facemash.html');
 });
